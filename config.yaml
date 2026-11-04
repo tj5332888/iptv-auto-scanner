@@ -94,6 +94,20 @@ upstreams:
   - name: yuechan
     type: m3u
     url: https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u
+  # ── 扩充上游（v2 新增，已验证连通）──
+  - name: suxuang-iptv
+    type: m3u
+    url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u
+  - name: apptv-zb
+    type: m3u
+    url: https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/ipv4/result.m3u
+  - name: foodie-guide
+    type: txt
+    url: http://www.foodieguide.com/iptv/hub001-foodies.txt
+  - name: tonkiang-search
+    type: m3u
+    url: http://tonkiang.us/hls/cctv1.list
+  # 注：joevess/kimentanm/YanG-1989 Gather 等仓库已 404 或空，剔除；fanmingming 为 IPv6 源（联通不可用）剔除
 
 # ── 分类规则（按顺序匹配，先命中先归类）──
 categories:

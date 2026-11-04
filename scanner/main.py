@@ -13,7 +13,7 @@ import datetime
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from collectors import collect_upstream, collect_platforms   # noqa: E402
+from collectors import collect_upstream, collect_platforms, collect_upstreams_many  # noqa: E402
 from validator import validate_many, dedup_keep_fastest      # noqa: E402
 from classifier import classify                              # noqa: E402
 from builder import build_m3u, build_txt, build_report       # noqa: E402
@@ -78,16 +78,21 @@ def main():
                 pool.append((n, u, f"platform:{plat}"))
     print(f"[platforms] {len(pool)} channels", flush=True)
 
-    # 2) 上游聚合（只收 CCTV/卫视/CGTN 相关 —— 关键提速：避免地方台噪音拖满验证时限）
+    # 2) 上游聚合（并发拉取 + 只收 CCTV/卫视/CGTN —— 提速关键）
     name_pat = re.compile(r"CCTV|央视|卫视|CGTN", re.I)
-    for up in upstreams:
-        items = collect_upstream(up["name"], up["url"], up["type"])[:max_per * 3]
-        fresh = [(n, u) for n, u in items if u not in seen and name_pat.search(n)]
-        for n, u in fresh:
-            seen.add(u)
-            pool.append((n, u, up["name"]))
-        print(f"[upstream] {up['name']:<16} {len(fresh):>4} fresh (of {len(items)})", flush=True)
+    up_results = collect_upstreams_many(upstreams, workers=8, max_per=max_per * 3)
+    per_src = {}
+    for src, n, u in up_results:
+        per_src.setdefault(src, 0)
+        if u in seen or not name_pat.search(n):
+            continue
+        seen.add(u)
+        pool.append((n, u, src))
+        per_src[src] += 1
+    for src in sorted(per_src):
+        print(f"[upstream] {src:<16} {per_src[src]:>4} fresh", flush=True)
     stats["collected"] = len(pool)
+    print(f"[total] {len(pool)} candidates after name-filter", flush=True)
 
     # 3) 官方直播页（仅本地有浏览器时生效；Actions 环境自动跳过）
     if not os.environ.get("CI"):
