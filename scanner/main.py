@@ -119,29 +119,41 @@ def main():
     stats["dropped"] = len(pool) - len(results)
     print(f"[validate] pass={len(results)} drop={stats['dropped']}", flush=True)
 
-    # 5) 阈值过滤（75寸质量标准）
-    results = [r for r in results
-               if r["speed"] >= min_speed and (min_kbps == 0 or r["kbps"] >= min_kbps)]
+    # 5) 阈值过滤（75寸质量标准；HEVC 效率是 H.264 两倍，码率要求减半）
+    def _pass_gate(r):
+        if r["speed"] < min_speed:
+            return False
+        if min_kbps == 0:
+            return True
+        gate = min_kbps * 0.5 if r.get("codec") == "H.265" else min_kbps
+        return r["kbps"] >= gate
+    results = [r for r in results if _pass_gate(r)]
     print(f"[filter] quality-gate: {len(results)}", flush=True)
 
-    # 5.5) L4 浏览器播放验证（对速度 Top N 实播；无浏览器/CI 时自动跳过）
+    # 5.5) L4 浏览器播放验证（对速度 Top N 实播，3 并发；无浏览器/CI 时自动跳过）
     bvcfg = cfg.get("browser_verify") or {}
     l4_results = []
     if bvcfg.get("enabled") and not os.environ.get("CI"):
         try:
             from browser_verify import browser_test
+            import concurrent.futures
             top = sorted(results, key=lambda x: -x["speed"])[:bvcfg.get("max_test", 6)]
-            print(f"[browser-l4] testing top {len(top)} ...", flush=True)
-            for idx, r in enumerate(top):
+            print(f"[browser-l4] testing top {len(top)} (3-way parallel) ...", flush=True)
+
+            def _l4(item):
+                idx, r = item
                 port = bvcfg.get("start_port", 9700) + idx
-                br = browser_test(r["url"], port, bvcfg.get("wait", 18))
-                r["browser_ok"] = br.get("ok", False)
-                r["browser"] = br
-                mark = "PLAY" if br.get("ok") else "fail"
-                print(f"[browser-l4] {mark} t={br.get('time_s',0)}s "
-                      f"res={br.get('res','?')} frags={br.get('frags',0)} "
-                      f"errs={br.get('errs',0)}  {r['name'][:24]}", flush=True)
-                l4_results.append((r["name"], r, br))
+                return r, browser_test(r["url"], port, bvcfg.get("wait", 18))
+
+            with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:
+                for r, br in ex.map(_l4, list(enumerate(top))):
+                    r["browser_ok"] = br.get("ok", False)
+                    r["browser"] = br
+                    mark = "PLAY" if br.get("ok") else "fail"
+                    print(f"[browser-l4] {mark} t={br.get('time_s',0)}s "
+                          f"res={br.get('res','?')} frags={br.get('frags',0)} "
+                          f"errs={br.get('errs',0)}  {r['name'][:24]}", flush=True)
+                    l4_results.append((r["name"], r, br))
             if l4_results:
                 stats["l4_pass"] = sum(1 for _, _, b in l4_results if b.get("ok"))
                 print(f"[browser-l4] pass={stats['l4_pass']}/{len(l4_results)}", flush=True)

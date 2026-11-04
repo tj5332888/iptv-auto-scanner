@@ -23,9 +23,13 @@ def build_m3u(categorized: dict, epg_template: str = "") -> str:
             name, r = item[0], item[1]
             tvg_id = re.sub(r"\s+", "", name)
             src = r.get("source", "")
+            codec = r.get("codec", "?")
+            tag = f"{codec} {r['profile']}@{r['level']:.1f}"
+            if r.get("vres"):
+                tag += f" {r['vres']}"
             out.append(
                 f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{_safe(name)}" '
-                f'group-title="{cat}",{name} [{r["profile"]}@{r["level"]:.1f} {r["speed"]}KB/s]'
+                f'group-title="{cat}",{name} [{tag} {r["speed"]}KB/s]'
             )
             if src:
                 out.append(f'# source: {src} | quality: {r["kbps"]}kbps')
@@ -62,11 +66,11 @@ def build_report(categorized: dict, stats: dict) -> str:
     for cat, chans in categorized.items():
         out.append(f"## {cat}（{len(chans)} 频道）")
         out.append("")
-        out.append("| 频道 | 档位 | 码率 | 速度 | 来源 |")
-        out.append("|---|---|---|---|---|")
+        out.append("| 频道 | 编码 | 档位 | 码率 | 速度 | 来源 |")
+        out.append("|---|---|---|---|---|---|")
         for item in chans:
             name, r = item[0], item[1]
-            out.append(f"| {name} | {r['profile']}@{r['level']:.1f} "
+            out.append(f"| {name} | {r.get('codec','?')} | {r['profile']}@{r['level']:.1f} "
                        f"| {r['kbps']}kbps | {r['speed']}KB/s | {r.get('source','?')} |")
         out.append("")
     return "\n".join(out) + "\n"

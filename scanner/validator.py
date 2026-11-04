@@ -4,6 +4,8 @@
   1. 预筛：先只拉 m3u8（轻量 15KB），剔除大半死流，再对幸存者做分片测速
   2. 硬超时：requests timeout 双值 (connect, read)，避免慢流拖死
   3. 全局 deadline：验证阶段总时长受控，到点立即汇总已有结果
+  4. 变体优选：master 清单选 BANDWIDTH 最高档（75 寸画质优先）
+  5. 编码识别：H.264 与 HEVC(H.265) 均识别（HEVC SPS 是 0x42/0x40 NAL）
 """
 import re
 import time
@@ -12,9 +14,12 @@ import requests
 
 UA = {"User-Agent": "Mozilla/5.0 (Linux; Android 9)"}
 
-_TS_PAT = re.compile(rb"\x00\x00\x00\x01\x67|\x00\x00\x01\x67")
+_H264_PAT = re.compile(rb"\x00\x00\x00\x01\x67|\x00\x00\x01\x67")
+_HEVC_PAT = re.compile(rb"\x00\x00\x00\x01\x42|\x00\x00\x01\x42")  # 只认 SPS(0x42)；VPS(0x40) 头结构不同会读错位
 _PROFILE = {66: "Baseline", 77: "Main", 88: "Extended", 100: "High",
             110: "High422", 122: "High10"}
+_HEVC_PROFILE = {1: "HEVC-Main", 2: "HEVC-Main10", 3: "HEVC-Still",
+                 4: "HEVC-RExt"}
 
 
 def _get(url, timeout, n=700_000):
@@ -24,18 +29,51 @@ def _get(url, timeout, n=700_000):
     return data, r.url
 
 
-def _sps_level(data: bytes):
-    m = _TS_PAT.search(data)
-    if not m:
-        return None
-    off = 4 if m.group(0) == b"\x00\x00\x00\x01\x67" else 3
-    i = m.start() + off
-    try:
-        prof = data[i + 1]
-        lvl = data[i + 3]
-        return _PROFILE.get(prof, str(prof)), lvl / 10.0
-    except IndexError:
-        return None
+def _unescape(rbsp: bytes) -> bytes:
+    """去防竞争字节（0x00 0x00 0x03 → 0x00 0x00），保证偏移正确。"""
+    return rbsp.replace(b"\x00\x00\x03", b"\x00\x00")
+
+
+def _codec_info(data: bytes):
+    """识别编码 → (codec, profile, level)。H.264 SPS / HEVC VPS+SPS 均支持。"""
+    m = _H264_PAT.search(data)
+    if m:
+        i = m.start() + (4 if len(m.group(0)) == 5 else 3)
+        try:
+            rbsp = _unescape(data[i + 1:i + 8])
+            return "H.264", _PROFILE.get(rbsp[0], str(rbsp[0])), rbsp[2] / 10.0
+        except IndexError:
+            return "H.264", "?", 0.0
+    m = _HEVC_PAT.search(data)
+    if m:
+        i = m.start() + (4 if len(m.group(0)) == 5 else 3)
+        try:
+            # NAL 头 2 字节后 RBSP：[1]=profile flags [12]=level_idc
+            rbsp = _unescape(data[i + 2:i + 24])
+            pidc = rbsp[1] & 0x1F
+            return "H.265", _HEVC_PROFILE.get(pidc, f"HEVC-{pidc}"), rbsp[12] / 30.0
+        except IndexError:
+            return "H.265", "HEVC", 0.0
+    return None
+
+
+def _pick_variant(text: str):
+    """master 清单 → (url, bandwidth, resolution)。选 BANDWIDTH 最高档。"""
+    best, bw_b, res_b = None, -1, ""
+    lines = text.splitlines()
+    for i, ln in enumerate(lines):
+        if ln.startswith("#EXT-X-STREAM-INF"):
+            m = re.search(r"BANDWIDTH=(\d+)", ln)
+            bw = int(m.group(1)) if m else 0
+            rm = re.search(r"RESOLUTION=(\d+x\d+)", ln)
+            res = rm.group(1) if rm else ""
+            for ln2 in lines[i + 1:]:
+                t = ln2.strip()
+                if t and not t.startswith("#"):
+                    if bw > bw_b:
+                        best, bw_b, res_b = t, bw, res
+                    break
+    return best, bw_b, res_b
 
 
 def prescreen(url: str, timeout: int = 4) -> bool:
@@ -48,20 +86,21 @@ def prescreen(url: str, timeout: int = 4) -> bool:
 
 
 def validate_one_full(url: str, timeout: int = 6, seg_bytes: int = 15000):
-    """完整验证（预筛通过后调用）：master 展开 → 分片 → SPS + 测速。"""
+    """完整验证（预筛通过后调用）：master 展开（选最高档）→ 分片 → 编码识别 + 测速。"""
     try:
         data, final = _get(url, timeout, 18_000)
         text = data.decode("utf-8", "ignore")
         if "#EXTM3U" not in text:
             return None
         depth = 0
+        v_bw, v_res = 0, ""
         while "#EXT-X-STREAM-INF" in text and depth < 2:
-            variants = [l.strip() for l in text.splitlines()
-                        if l.strip() and not l.startswith("#")]
-            if not variants:
+            var, vbw, vres = _pick_variant(text)   # ← 选 BANDWIDTH 最高档（画质优先）
+            if not var:
                 return None
+            v_bw, v_res = vbw, vres
             base = final.rsplit("/", 1)[0]
-            nxt = variants[0] if variants[0].startswith("http") else base + "/" + variants[0]
+            nxt = var if var.startswith("http") else base + "/" + var
             data, final = _get(nxt, timeout, 18_000)
             text = data.decode("utf-8", "ignore")
             if "#EXTM3U" not in text:
@@ -78,12 +117,15 @@ def validate_one_full(url: str, timeout: int = 6, seg_bytes: int = 15000):
         dl = time.time() - t1
         if len(seg) < seg_bytes:
             return None
-        sps = _sps_level(seg)
+        codec = _codec_info(seg)
         dur = re.search(r"#EXTINF:([\d.]+)", text)
         kbps = len(seg) * 8 / float(dur.group(1)) / 1000 if dur else 0
         speed = (len(seg) / 1024) / max(dl, 0.1)
         return {"url": url, "seg_url": seg_url,
-                "profile": sps[0] if sps else "?", "level": sps[1] if sps else 0,
+                "codec": codec[0] if codec else "?",
+                "profile": codec[1] if codec else "?",
+                "level": codec[2] if codec else 0,
+                "vres": v_res, "vbw": v_bw,
                 "kbps": int(kbps), "speed": int(speed), "seg_kb": len(seg) // 1024}
     except Exception:
         return None
