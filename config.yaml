@@ -1,0 +1,130 @@
+# IPTV 自动扫描验证系统配置
+
+# ── 验证阈值 ──
+# 75 寸大屏质量标准：码率≥800kbps（避免大屏模糊）且速度≥150KB/s（避免加载慢）
+validate:
+  timeout: 8              # 单请求超时（秒）
+  seg_bytes: 15000        # 分片最小字节数
+  min_speed_kb: 150       # 最低速度 KB/s（低于淘汰）
+  min_kbps: 800           # 最低码率 kbps（75寸画质线；0=不限）
+  workers: 12             # 并发数（Actions 免费额度建议 ≤15）
+  max_per_source: 400     # 单上游最多验证条数（防超时）
+  deadline_s: 900         # 验证阶段总时限（秒）＝15分钟，到点立即汇总
+
+# ── L4 浏览器播放验证（可选，本地推荐开启）──
+browser_verify:
+  enabled: true           # true = 对速度 Top N 的源做 hls.js 实播验证
+  max_test: 6             # 最多验证前 N 条（每条约 25 秒）
+  start_port: 9700        # CDP 端口起始
+  wait: 18                # 每条播放观察时长（秒）
+
+# ── 直播平台（代理解析）──
+platforms:
+  douyin:                 # https://<proxy>/douyin/<id>
+    proxy: https://live.yang-1989.eu.org
+    channels:
+      - { name: 央视网快看,   id: kuaikancctv }
+      - { name: 央视网财经,   id: nuanxinnengl }
+      - { name: 央视网超级工厂, id: "23265780613" }
+      - { name: 央视网科技,   id: "66415451233." }
+      - { name: 央视网美学,   id: "48025733893" }
+      - { name: 小央视频,     id: cctv_video }
+      - { name: 央视文艺,     id: "1027321223" }
+      - { name: 中国电影报道, id: zgdybd }
+  bilibili:               # https://<proxy>/bilibili/<id>
+    proxy: https://live.yang-1989.eu.org
+    channels:
+      - { name: 央视网,     id: "8178490" }
+      - { name: 央视频,     id: "21623527" }
+
+# ── GitHub 加速（中国网络访问 raw.githubusercontent 被限时用）──
+github_proxy: https://gh-proxy.com/
+use_github_proxy: false   # Actions runner 可直连，保持 false；本地中国网络改 true
+
+# ── 官方直播页（浏览器抓流，需 CDP；Actions 环境自动跳过）──
+official_pages:
+  - { name: 央视网,   base: "https://tv.cctv.com/live/",       pages: [cctv1, cctv2, cctv3, cctv5, cctv5plus, cctv13] }
+  - { name: 广东荔枝, base: "https://gdtv.cn/tvChannelDetail/", pages: [] }
+  - { name: 江苏荔枝, base: "https://live.jstv.com/",          pages: [] }
+  - { name: 广西网台, base: "https://tv.gxtv.cn/",             pages: [] }
+  - { name: 芒果TV,   base: "https://live.mgtv.com/",          pages: [] }
+  - { name: 新蓝浙江, base: "https://www.cztv.com/liveTV",     pages: [] }
+
+# ── EPG ──
+epg: https://epg.cdn.loc.cc/?ch={name}&date={date}
+
+# ── 上游聚合源 ──
+upstreams:
+  - name: zbds-iptv4
+    type: txt
+    url: https://live.zbds.top/tv/iptv4.txt
+  - name: zbds-m3u
+    type: m3u
+    url: https://live.zbds.top/tv/iptv4.m3u
+  - name: hacks-cctv
+    type: m3u
+    url: https://live.hacks.tools/tv/ipv4/categories/央视频道.m3u
+  - name: hacks-ws
+    type: m3u
+    url: https://live.hacks.tools/tv/ipv4/categories/卫视频道.m3u
+  - name: hacks-ty
+    type: m3u
+    url: https://live.hacks.tools/tv/ipv4/categories/体育频道.m3u
+  - name: bestfan-cctv
+    type: m3u
+    url: https://raw.githubusercontent.com/best-fan/iptv-sources/master/cn_cctv.m3u8
+  - name: bestfan-all
+    type: m3u
+    url: https://raw.githubusercontent.com/best-fan/iptv-sources/master/cn_all.m3u8
+  - name: bestfan-prov
+    type: m3u
+    url: https://raw.githubusercontent.com/best-fan/iptv-sources/master/cn_province.m3u8
+  - name: guovin
+    type: m3u
+    url: https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u
+  - name: vbskycn-gh
+    type: m3u
+    url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.m3u
+  - name: qist-tv
+    type: txt
+    url: https://qist.wyfc.qzz.io/tvboxtv.txt
+  - name: iptvorg-cn
+    type: m3u
+    url: https://iptv-org.github.io/iptv/countries/cn.m3u
+  - name: yuechan
+    type: m3u
+    url: https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u
+
+# ── 分类规则（按顺序匹配，先命中先归类）──
+categories:
+  央视频道:
+    - CCTV-?\d+
+    - CCTV
+    - 央视
+    - CGTN
+  体育频道:
+    - 体育
+    - 体育赛事
+    - 五套
+    - 竞速
+    - 足球|篮球|网球
+  电影频道:
+    - 电影
+    - 六套
+    - 1905
+  少儿频道:
+    - 少儿
+    - 卡通
+    - 动画
+  纪录频道:
+    - 纪录
+    - 九套
+    - doc
+  音乐频道:
+    - 音乐
+    - 十五套
+  卫视频道:
+    - 卫视
+  地方频道:
+    - 新闻综合|都市|民生|影视|文化|公共|教育
+  其他频道: []
