@@ -1,8 +1,8 @@
-# IPTV 扫描报告 2026-11-06 06:17:25
+# IPTV 扫描报告 2026-11-06 14:04:42
 
-- 上游采集：461 条
-- 验证通过：249 条
-- 淘汰：212 条
+- 上游采集：469 条
+- 验证通过：276 条
+- 淘汰：193 条
 
 ## 上游项目致谢
 
@@ -19,60 +19,63 @@
 
 | 频道 | 编码 | 档位 | 码率 | 速度 | 来源 |
 |---|---|---|---|---|---|
-| CGTN法语 | H.264 | Baseline@4.0 | 1200kbps | 2323KB/s | zbds-iptv4 |
-| CCTV-Nostalgia Theater (1080p) | H.264 | High@4.1 | 1022kbps | 2092KB/s | iptvorg-zho |
-| CCTV-16 | H.264 | High@4.1 | 891kbps | 2071KB/s | guovin |
-| 央视网快看 | H.264 | High@5.0 | 1800kbps | 1860KB/s | platform:douyin |
-| CGTN阿语 | H.264 | Baseline@4.0 | 1200kbps | 1848KB/s | zbds-iptv4 |
-| CGTN西语 | H.264 | Baseline@4.0 | 1200kbps | 1832KB/s | zbds-iptv4 |
-| CCTV-11 | H.264 | High@4.1 | 833kbps | 890KB/s | guovin |
-| 央视网超级工厂 | H.264 | High@4.0 | 1373kbps | 832KB/s | platform:douyin |
-| CGTN (1080p) | ? | ?@0.0 | 1200kbps | 811KB/s | iptvorg-zho |
-| CCTV13 | H.265 | HEVC-Main@5.1 | 720kbps | 804KB/s | bestfan-cctv |
-| CCTV15 | H.264 | High@5.1 | 1200kbps | 795KB/s | bestfan-cctv |
-| CCTV-4 Europe | H.264 | Main@4.0 | 1333kbps | 672KB/s | iptvorg-zho |
-| 央视网美学 | H.264 | High@4.0 | 1894kbps | 651KB/s | platform:douyin |
-| 央视网财经 | H.264 | High@4.0 | 1775kbps | 635KB/s | platform:douyin |
-| CCTV2 | H.264 | Main@3.0 | 1440kbps | 569KB/s | bestfan-cctv |
-| CCTV7 | H.264 | High@4.1 | 1440kbps | 560KB/s | bestfan-cctv |
-| CCTV1 | H.264 | High@4.1 | 1440kbps | 551KB/s | bestfan-cctv |
-| CCTV5 | H.264 | High@4.1 | 1440kbps | 551KB/s | bestfan-cctv |
-| CCTV11 | H.264 | High@4.1 | 1440kbps | 551KB/s | bestfan-cctv |
-| CCTV-14 | H.264 | High@4.0 | 1800kbps | 507KB/s | bestfan-cctv |
-| CCTV4K | ? | ?@0.0 | 1440kbps | 482KB/s | zbds-iptv4 |
-| CCTV17 | H.264 | High@4.0 | 1180kbps | 479KB/s | bestfan-cctv |
-| CCTV9 | H.264 | High@4.1 | 1440kbps | 468KB/s | bestfan-cctv |
-| CCTV12 | H.264 | High@3.0 | 1440kbps | 456KB/s | bestfan-cctv |
-| CCTV-13 | H.264 | High@4.0 | 1800kbps | 426KB/s | bestfan-cctv |
-| CCTV4 | ? | ?@0.0 | 1440kbps | 422KB/s | bestfan-cctv |
-| 央视频 | ? | ?@0.0 | 4512kbps | 358KB/s | platform:bilibili |
-| CCTV8 | H.264 | High@4.1 | 1440kbps | 334KB/s | bestfan-cctv |
-| CCTV3 | H.264 | Main@3.0 | 1440kbps | 280KB/s | bestfan-cctv |
-| CCTV14 | H.264 | High@4.1 | 1440kbps | 264KB/s | bestfan-cctv |
-| CCTV16 | ? | ?@0.0 | 1200kbps | 259KB/s | bestfan-cctv |
-| 央视网 | H.265 | HEVC-Main@5.0 | 1689kbps | 220KB/s | platform:bilibili |
-| CCTV6 | H.264 | High@4.1 | 1440kbps | 187KB/s | bestfan-cctv |
-| CCTV10 | ? | ?@0.0 | 1440kbps | 170KB/s | bestfan-cctv |
+| CGTN法语 | H.264 | Baseline@4.0 | 1200kbps | 2165KB/s | zbds-iptv4 |
+| CCTV-17 | H.264 | High@4.1 | 869kbps | 2141KB/s | guovin |
+| CCTV-World Geography SD (1080p) | H.264 | High@4.1 | 849kbps | 2089KB/s | iptvorg-zho |
+| CCTV-7 | H.264 | High@4.1 | 800kbps | 2075KB/s | guovin |
+| CCTV-Storm Music (1080p) | H.264 | High@4.1 | 1285kbps | 2064KB/s | iptvorg-zho |
+| CGTN西语 | H.264 | Baseline@4.0 | 1200kbps | 1554KB/s | zbds-iptv4 |
+| 央视网科技 | H.264 | High@4.2 | 1727kbps | 1476KB/s | platform:douyin |
+| CGTN阿语 | H.264 | Baseline@4.0 | 1200kbps | 1434KB/s | zbds-iptv4 |
+| CGTN (1080p) | ? | ?@0.0 | 1200kbps | 861KB/s | iptvorg-zho |
+| CCTV1 | H.265 | HEVC-Main@5.1 | 1200kbps | 819KB/s | bestfan-cctv |
+| CCTV15 | H.264 | High@5.1 | 1200kbps | 816KB/s | bestfan-cctv |
+| 央视网美学 | H.264 | High@4.0 | 1764kbps | 687KB/s | platform:douyin |
+| CCTV17 | H.265 | HEVC-Main@5.1 | 720kbps | 673KB/s | bestfan-cctv |
+| 央视网超级工厂 | H.264 | High@4.0 | 1140kbps | 657KB/s | platform:douyin |
+| CCTV-4 Europe | H.264 | Main@4.0 | 1333kbps | 582KB/s | iptvorg-zho |
+| CCTV-14 | H.264 | High@4.0 | 1800kbps | 572KB/s | bestfan-cctv |
+| CCTV14 | H.264 | High@4.1 | 1440kbps | 570KB/s | bestfan-cctv |
+| CCTV2 | H.264 | High@4.1 | 1440kbps | 544KB/s | bestfan-cctv |
+| CCTV11 | H.264 | High@4.1 | 1142kbps | 512KB/s | bestfan-cctv |
+| CCTV4K | ? | ?@0.0 | 1440kbps | 509KB/s | zbds-iptv4 |
+| CCTV-5+ | H.264 | High@4.0 | 1500kbps | 508KB/s | guovin |
+| CCTV16 | ? | ?@0.0 | 1200kbps | 505KB/s | bestfan-cctv |
+| CCTV3 | H.264 | Main@4.0 | 1200kbps | 481KB/s | bestfan-cctv |
+| CCTV13 | H.264 | High@4.1 | 1142kbps | 443KB/s | bestfan-cctv |
+| 央视网财经 | H.264 | High@4.0 | 864kbps | 421KB/s | platform:douyin |
+| CCTV4 | H.264 | High@3.0 | 1200kbps | 414KB/s | bestfan-cctv |
+| 央视网快看 | H.264 | High@5.0 | 1800kbps | 393KB/s | platform:douyin |
+| CCTV9 | H.264 | High@3.0 | 1440kbps | 353KB/s | bestfan-cctv |
+| CCTV7 | H.264 | High@4.1 | 1440kbps | 290KB/s | bestfan-cctv |
+| CCTV5+ | H.264 | High@4.0 | 972kbps | 289KB/s | bestfan-cctv |
+| CCTV12 | H.264 | High@3.0 | 1440kbps | 267KB/s | bestfan-cctv |
+| 小央视频 | H.264 | High@5.0 | 1800kbps | 249KB/s | platform:douyin |
+| CCTV8 | H.264 | High@4.1 | 1440kbps | 237KB/s | bestfan-cctv |
+| CCTV-13 | H.264 | High@4.0 | 1800kbps | 185KB/s | bestfan-cctv |
 
-## 卫视频道（17 频道）
+## 卫视频道（20 频道）
 
 | 频道 | 编码 | 档位 | 码率 | 速度 | 来源 |
 |---|---|---|---|---|---|
-| 湖南卫视 | H.265 | HEVC-Main@5.0 | 1200kbps | 2436KB/s | zbds-iptv4 |
-| 四川卫视 | H.264 | High@4.1 | 829kbps | 2107KB/s | guovin |
-| 深圳卫视 | H.264 | High@4.1 | 861kbps | 2097KB/s | guovin |
-| 江西卫视 | H.264 | High@4.1 | 814kbps | 2096KB/s | guovin |
-| 山东卫视 | H.264 | High@4.1 | 833kbps | 2094KB/s | guovin |
-| 宁夏卫视 | H.264 | High@4.1 | 891kbps | 2086KB/s | guovin |
-| 吉林卫视 | H.264 | High@4.1 | 849kbps | 2014KB/s | guovin |
-| 河南卫视 | H.264 | High@4.1 | 861kbps | 742KB/s | guovin |
-| 东南卫视 | H.264 | Main@4.0 | 1203kbps | 575KB/s | zbds-iptv4 |
-| 内蒙古卫视 | H.264 | High@4.0 | 2000kbps | 564KB/s | guovin |
-| 河北卫视 | H.264 | High@5.1 | 2045kbps | 485KB/s | guovin |
-| 东方卫视 | H.264 | High@5.0 | 2368kbps | 450KB/s | zbds-iptv4 |
-| 安多卫视 | H.264 | Main@4.2 | 1800kbps | 353KB/s | guovin |
-| 新疆卫视 | H.264 | High@4.1 | 1000kbps | 346KB/s | zbds-iptv4 |
-| 人间卫视 | H.264 | High@3.1 | 1198kbps | 285KB/s | zbds-iptv4 |
-| 东方卫视4K | H.264 | High@5.0 | 2144kbps | 238KB/s | zbds-iptv4 |
-| 西藏卫视 | ? | ?@0.0 | 1440kbps | 154KB/s | guovin |
+| 安徽卫视 | H.264 | High@4.1 | 1104kbps | 2208KB/s | guovin |
+| 云南卫视 | H.264 | High@4.1 | 861kbps | 2169KB/s | guovin |
+| 北京卫视 | H.264 | High@4.1 | 891kbps | 2092KB/s | guovin |
+| 湖南卫视 | H.265 | HEVC-Main@5.0 | 1200kbps | 1504KB/s | guovin |
+| 甘肃卫视 | H.264 | High@4.0 | 1500kbps | 610KB/s | guovin |
+| 山东卫视 | H.264 | High@4.0 | 1500kbps | 591KB/s | guovin |
+| 东南卫视 | H.264 | High@4.0 | 1363kbps | 590KB/s | guovin |
+| 浙江卫视 | H.264 | High@4.0 | 900kbps | 571KB/s | zbds-iptv4 |
+| 西藏卫视 | H.264 | High@4.0 | 1406kbps | 529KB/s | guovin |
+| 广西卫视 | H.264 | High@4.0 | 1500kbps | 527KB/s | guovin |
+| 湖北卫视 | ? | ?@0.0 | 1551kbps | 496KB/s | guovin |
+| 东方卫视 | H.264 | High@5.0 | 2400kbps | 485KB/s | zbds-iptv4 |
+| 广东卫视 | ? | ?@0.0 | 1730kbps | 480KB/s | guovin |
+| 内蒙古卫视 | H.264 | High@4.0 | 2368kbps | 410KB/s | guovin |
+| 河北卫视 | H.264 | High@5.1 | 1800kbps | 390KB/s | guovin |
+| 人间卫视 | H.264 | High@3.1 | 1198kbps | 318KB/s | zbds-iptv4 |
+| 东方卫视4K | H.264 | High@5.0 | 2368kbps | 272KB/s | zbds-iptv4 |
+| 新疆卫视 | H.264 | High@4.1 | 998kbps | 252KB/s | zbds-iptv4 |
+| 山西卫视 | H.264 | High@4.1 | 1440kbps | 195KB/s | zbds-iptv4 |
+| 黑龙江卫视 | ? | ?@0.0 | 1406kbps | 171KB/s | guovin |
 
