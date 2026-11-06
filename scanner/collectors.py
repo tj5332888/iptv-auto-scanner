@@ -9,6 +9,12 @@ import requests
 UA = {"User-Agent": "Mozilla/5.0 (Linux; Android 9)"}
 
 
+def _clean_url(u: str) -> str:
+    """清洗单条 URL：多条 ;/# 粘连只取第一段；含空白/逗号视为残缺。"""
+    u = re.split(r"[;#]", u.strip(), 1)[0].strip()
+    return u if u and not re.search(r"[\s,]", u) else ""
+
+
 def _parse_m3u(text: str):
     """解析 M3U → [(url, name)]"""
     out, pending = [], None
@@ -18,7 +24,9 @@ def _parse_m3u(text: str):
             i = t.rfind(",")
             pending = t[i + 1:].strip() if i >= 0 and i < len(t) - 1 else "?"
         elif t and not t.startswith("#") and "://" in t:
-            yield t, pending or "?"
+            u = _clean_url(t)
+            if u:
+                yield u, pending or "?"
             pending = None
 
 
@@ -30,11 +38,8 @@ def _parse_txt(text: str):
             continue
         if "," in t and "://" in t:
             nm, u = t.split(",", 1)
-            u = u.strip()
-            # 上游常见脏格式：多条 URL 用 ; / # 粘连 —— 只取第一段
-            u = re.split(r"[;#]", u, 1)[0].strip()
-            # 剔除含空白或逗号的残缺 URL
-            if re.search(r"[\s,]", u):
+            u = _clean_url(u)
+            if not u:
                 continue
             if u.startswith(("http://", "https://")):
                 # 跳过内网/组播/IPv6（组播地址 rtsp/udp 也会被 scheme 检查挡掉）
