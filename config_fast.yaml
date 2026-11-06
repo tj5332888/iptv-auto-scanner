@@ -40,15 +40,6 @@ platforms:
 github_proxy: https://gh-proxy.com/
 use_github_proxy: false
 official_pages:
-- name: 央视网
-  base: https://tv.cctv.com/live/
-  pages:
-  - cctv1
-  - cctv2
-  - cctv3
-  - cctv5
-  - cctv5plus
-  - cctv13
 - name: 广东荔枝
   base: https://gdtv.cn/tvChannelDetail/
   pages: []

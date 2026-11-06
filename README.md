@@ -31,7 +31,7 @@
 
 ## 功能
 
-- **全网采集**：zbds / hacks.tools / best-fan / Guovin 等聚合站 + 自定义上游
+- **全网采集**：zbds / hacks.tools / best-fan / Guovin 等聚合站 + 自定义上游（不采集 tv.cctv.com 央视网来源）
 - **直播平台**：抖音 / B站 / 虎牙 / 斗鱼 直播间代理解析（基于 yang-1989 服务模式）
 - **三层验证**：m3u8 可达 → 分片下载 → 编码档位解析（H.264 SPS / HEVC SPS 均识别）+ 测速；master 清单选 BANDWIDTH 最高档
 - **智能分类**：央视 / 卫视 / 体育 / 电影 / 地方 / 纪录 / 其他

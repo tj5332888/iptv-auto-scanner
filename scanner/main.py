@@ -60,8 +60,8 @@ def main():
 
     upstreams = cfg.get("upstreams", [])
     if args.profile == "fast":
-        fast_names = {"hacks-cctv", "hacks-ws", "bestfan-cctv",
-                      "zbds-iptv4", "guovin"}
+        fast_names = {"hacks-cctv", "hacks-ws", "hacks-doc", "bestfan-cctv",
+                      "zbds-iptv4", "guovin", "iptvorg-zho"}
         upstreams = [u for u in upstreams if u["name"] in fast_names]
 
     now = datetime.datetime.now()
@@ -173,7 +173,7 @@ def main():
                      key=lambda k: (classify(k, cfg.get("categories", {})) != "央视频道",
                                     ch_num(k), k))
     for key in ordered:
-        chans = sorted(dedup[key], key=lambda x: -x["speed"])
+        chans = sorted(dedup[key], key=lambda x: (-x["speed"], x.get("disc", 0)))
         r = chans[0]
         cat = classify(r["name"], cfg.get("categories", {}))
         ch_key = re.sub(r"[\s(（【].*$", "", r["name"])

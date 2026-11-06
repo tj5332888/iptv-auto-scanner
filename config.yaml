@@ -42,8 +42,8 @@ github_proxy: https://gh-proxy.com/
 use_github_proxy: false   # Actions runner 可直连，保持 false；本地中国网络改 true
 
 # ── 官方直播页（浏览器抓流，需 CDP；Actions 环境自动跳过）──
+# 不采集 tv.cctv.com（央视网）来源
 official_pages:
-  - { name: 央视网,   base: "https://tv.cctv.com/live/",       pages: [cctv1, cctv2, cctv3, cctv5, cctv5plus, cctv13] }
   - { name: 广东荔枝, base: "https://gdtv.cn/tvChannelDetail/", pages: [] }
   - { name: 江苏荔枝, base: "https://live.jstv.com/",          pages: [] }
   - { name: 广西网台, base: "https://tv.gxtv.cn/",             pages: [] }
@@ -91,6 +91,12 @@ upstreams:
   - name: iptvorg-cn
     type: m3u
     url: https://iptv-org.github.io/iptv/countries/cn.m3u
+  - name: iptvorg-zho
+    type: m3u
+    url: https://iptv-org.github.io/iptv/languages/zho.m3u
+  - name: hacks-doc
+    type: m3u
+    url: https://live.hacks.tools/tv/ipv4/categories/纪录频道.m3u
   - name: yuechan
     type: m3u
     url: https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u
@@ -101,13 +107,8 @@ upstreams:
   - name: apptv-zb
     type: m3u
     url: https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/ipv4/result.m3u
-  - name: foodie-guide
-    type: txt
-    url: http://www.foodieguide.com/iptv/hub001-foodies.txt
-  - name: tonkiang-search
-    type: m3u
-    url: http://tonkiang.us/hls/cctv1.list
-  # 注：joevess/kimentanm/YanG-1989 Gather 等仓库已 404 或空，剔除；fanmingming 为 IPv6 源（联通不可用）剔除
+  # 注：joevess/kimentanm/YanG-1989 Gather/foodieguide/tonkiang 等已 404 或空，剔除；
+  # fanmingming 为 IPv6 源（联通不可用）剔除；2026-11-05 实测新增 iptvorg-zho / hacks-doc
 
 # ── 分类规则（按顺序匹配，先命中先归类）──
 categories:
