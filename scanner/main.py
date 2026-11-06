@@ -190,8 +190,12 @@ def main():
         m3u = build_m3u(categorized, epg)
         txt = build_txt(categorized)
         rep = build_report(categorized, stats)
+        # 电视端安全版：纯 H.264（HEVC 在海信等电视系统播放器上黑屏）
+        from builder import build_tvbox_m3u, build_tvbox_txt
         open(os.path.join(args.out, "live.m3u"), "w", encoding="utf-8").write(m3u)
         open(os.path.join(args.out, "live.txt"), "w", encoding="utf-8").write(txt)
+        open(os.path.join(args.out, "live_tvbox.m3u"), "w", encoding="utf-8").write(build_tvbox_m3u(categorized, epg))
+        open(os.path.join(args.out, "live_tvbox.txt"), "w", encoding="utf-8").write(build_tvbox_txt(categorized))
         open(os.path.join(args.out, "report.md"), "w", encoding="utf-8").write(rep)
         # 来源清单（完整溯源：主线 + 备用）
         src = [f"# 来源清单 {stats['time']}", ""]

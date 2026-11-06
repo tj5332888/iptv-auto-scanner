@@ -48,6 +48,36 @@ def build_txt(categorized: dict) -> str:
     return "\n".join(out) + "\n"
 
 
+def _h264_only(categorized: dict) -> dict:
+    """只保留 H.264 线路的频道（HEVC/未知编码剔除）。
+
+    海信等电视端系统播放器对 HTTP TS 封装的 H.265 支持差（黑屏），
+    TVBox 走 exoplayer 内核同样踩坑，电视端专用清单只输出 H.264。
+    """
+    out = {}
+    for cat, chans in categorized.items():
+        keep = []
+        for item in chans:
+            name, r, all_lines = item[0], item[1], item[2]
+            lines264 = [x for x in all_lines if x.get("codec") == "H.264"]
+            if not lines264:
+                continue
+            keep.append((name, lines264[0], lines264))
+        if keep:
+            out[cat] = keep
+    return out
+
+
+def build_tvbox_m3u(categorized: dict, epg_template: str = "") -> str:
+    """电视端（TVBox/海信）安全版：纯 H.264，剔除 HEVC 与未知编码。"""
+    return build_m3u(_h264_only(categorized), epg_template)
+
+
+def build_tvbox_txt(categorized: dict) -> str:
+    """电视端（TVBox/海信）安全版 TXT：纯 H.264。"""
+    return build_txt(_h264_only(categorized))
+
+
 def build_report(categorized: dict, stats: dict) -> str:
     out = [f"# IPTV 扫描报告 {stats.get('time','')}", ""]
     out.append(f"- 上游采集：{stats.get('collected',0)} 条")
