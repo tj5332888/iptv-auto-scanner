@@ -31,6 +31,11 @@ def _parse_txt(text: str):
         if "," in t and "://" in t:
             nm, u = t.split(",", 1)
             u = u.strip()
+            # 上游常见脏格式：多条 URL 用 ; / # 粘连 —— 只取第一段
+            u = re.split(r"[;#]", u, 1)[0].strip()
+            # 剔除含空白或逗号的残缺 URL
+            if re.search(r"[\s,]", u):
+                continue
             if u.startswith(("http://", "https://")):
                 # 跳过内网/组播/IPv6（组播地址 rtsp/udp 也会被 scheme 检查挡掉）
                 if re.search(r"(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.|\[)", u):

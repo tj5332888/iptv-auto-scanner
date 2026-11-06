@@ -93,6 +93,8 @@ def _pick_variant(text: str):
 
 def prescreen(url: str, timeout: int = 4) -> bool:
     """预筛：m3u8 可达且含 EXTM3U。轻量（15KB）。短超时 (3,4) 保证秒级判定。"""
+    if not url.startswith(("http://", "https://")):
+        return False
     try:
         data, _ = _get(url, min(timeout, 4), 15_000)
         return b"#EXTM3U" in data
