@@ -3,136 +3,137 @@
 # vbskycn/iptv | best-fan/iptv-sources | Guovin/iptv-api
 # YueChan/Live | iptv-org/iptv | qist/tvbox | YanG-1989/m3u (平台代理)
 #PLAYLIST:央视频道
-#EXTINF:-1 tvg-id="CGTN西语" tvg-name="CGTN西语" group-title="央视频道",CGTN西语 [H.264 Baseline@4.0 8789KB/s]
-# source: zbds-iptv4 | quality: 1200kbps
-https://0472.org/hls/cgtnx.m3u8
-#EXTINF:-1 tvg-id="CGTN阿语" tvg-name="CGTN阿语" group-title="央视频道",CGTN阿语 [H.264 Baseline@4.0 8789KB/s]
+#EXTINF:-1 tvg-id="CGTN阿语" tvg-name="CGTN阿语" group-title="央视频道",CGTN阿语 [H.264 Baseline@4.0 1461KB/s]
 # source: zbds-iptv4 | quality: 1200kbps
 https://0472.org/hls/cgtna.m3u8
-#EXTINF:-1 tvg-id="央视网快看" tvg-name="央视网快看" group-title="央视频道",央视网快看 [H.264 High@5.0 2587KB/s]
-# source: platform:douyin | quality: 3600kbps
+#EXTINF:-1 tvg-id="CGTN西语" tvg-name="CGTN西语" group-title="央视频道",CGTN西语 [H.264 Baseline@4.0 1440KB/s]
+# source: zbds-iptv4 | quality: 1200kbps
+https://0472.org/hls/cgtnx.m3u8
+#EXTINF:-1 tvg-id="央视网快看" tvg-name="央视网快看" group-title="央视频道",央视网快看 [H.264 High@5.0 1028KB/s]
+# source: platform:douyin | quality: 1883kbps
 https://live.yang-1989.eu.org/douyin/kuaikancctv
-#EXTINF:-1 tvg-id="小央视频" tvg-name="小央视频" group-title="央视频道",小央视频 [H.264 High@5.0 1620KB/s]
-# source: platform:douyin | quality: 3600kbps
-https://live.yang-1989.eu.org/douyin/cctv_video
-#EXTINF:-1 tvg-id="CCTV15" tvg-name="CCTV15" group-title="央视频道",CCTV15 [H.264 High@5.1 549KB/s]
+#EXTINF:-1 tvg-id="CCTV15" tvg-name="CCTV15" group-title="央视频道",CCTV15 [H.264 High@5.1 866KB/s]
 # source: bestfan-cctv | quality: 1200kbps
 http://45.192.97.170:8880/play/16.m3u8
-#EXTINF:-1 tvg-id="央视网美学" tvg-name="央视网美学" group-title="央视频道",央视网美学 [H.264 High@4.0 508KB/s]
-# source: platform:douyin | quality: 1825kbps
-https://live.yang-1989.eu.org/douyin/48025733893
-#EXTINF:-1 tvg-id="CCTV1" tvg-name="CCTV1" group-title="央视频道",CCTV1 [H.265 HEVC-Main@5.1 500KB/s]
+#EXTINF:-1 tvg-id="CGTN(1080p)" tvg-name="CGTN (1080p)" group-title="央视频道",CGTN (1080p) [? ?@0.0 1920x1080 846KB/s]
+# source: iptvorg-zho | quality: 1200kbps
+https://amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv/master.m3u8
+#EXTINF:-1 tvg-id="央视网财经" tvg-name="央视网财经" group-title="央视频道",央视网财经 [H.264 High@4.0 772KB/s]
+# source: platform:douyin | quality: 802kbps
+https://live.yang-1989.eu.org/douyin/nuanxinnengl
+#EXTINF:-1 tvg-id="CCTV1" tvg-name="CCTV1" group-title="央视频道",CCTV1 [H.265 HEVC-Main@5.1 704KB/s]
 # source: bestfan-cctv | quality: 1200kbps
 http://45.192.97.170:8880/play/1.m3u8
-#EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV3" group-title="央视频道",CCTV3 [H.264 Main@3.0 470KB/s]
-# source: bestfan-cctv | quality: 1440kbps
-http://119.129.172.179:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-id="CCTV13" tvg-name="CCTV13" group-title="央视频道",CCTV13 [H.265 HEVC-Main@5.1 467KB/s]
-# source: bestfan-cctv | quality: 720kbps
-http://45.192.97.170:8880/play/14.m3u8
-#EXTINF:-1 tvg-id="CCTV5" tvg-name="CCTV5" group-title="央视频道",CCTV5 [H.264 Main@3.0 461KB/s]
-# source: bestfan-cctv | quality: 1440kbps
-http://119.129.172.179:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-id="央视网财经" tvg-name="央视网财经" group-title="央视频道",央视网财经 [H.264 High@4.0 441KB/s]
-# source: platform:douyin | quality: 1332kbps
-https://live.yang-1989.eu.org/douyin/nuanxinnengl
-#EXTINF:-1 tvg-id="CCTV17" tvg-name="CCTV17" group-title="央视频道",CCTV17 [H.265 HEVC-Main@5.1 437KB/s]
+#EXTINF:-1 tvg-id="CCTV17" tvg-name="CCTV17" group-title="央视频道",CCTV17 [H.265 HEVC-Main@5.1 684KB/s]
 # source: bestfan-cctv | quality: 720kbps
 http://45.192.97.170:8880/play/17.m3u8
-#EXTINF:-1 tvg-id="CCTV12" tvg-name="CCTV12" group-title="央视频道",CCTV12 [H.264 High@3.0 419KB/s]
-# source: bestfan-cctv | quality: 1440kbps
-http://119.129.172.179:9901/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-id="CCTV11" tvg-name="CCTV11" group-title="央视频道",CCTV11 [H.264 High@3.0 415KB/s]
-# source: bestfan-cctv | quality: 1440kbps
-http://119.129.172.179:9901/tsfile/live/0011_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-id="CCTV2" tvg-name="CCTV2" group-title="央视频道",CCTV2 [H.264 Main@3.0 414KB/s]
-# source: bestfan-cctv | quality: 1440kbps
-http://119.129.172.179:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-id="CCTV4" tvg-name="CCTV4" group-title="央视频道",CCTV4 [H.264 High@3.0 387KB/s]
-# source: bestfan-cctv | quality: 1440kbps
-http://119.39.9.8:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=0&authid=0
-#EXTINF:-1 tvg-id="CCTV-14" tvg-name="CCTV-14" group-title="央视频道",CCTV-14 [H.264 High@4.0 359KB/s]
+#EXTINF:-1 tvg-id="CCTV-4Europe" tvg-name="CCTV-4 Europe" group-title="央视频道",CCTV-4 Europe [H.264 Main@4.0 620KB/s]
+# source: iptvorg-zho | quality: 1500kbps
+https://dash2.antik.sk/live/test_cctv_tizen/playlist.m3u8
+#EXTINF:-1 tvg-id="CCTV-14" tvg-name="CCTV-14" group-title="央视频道",CCTV-14 [H.264 High@4.0 620KB/s]
 # source: bestfan-cctv | quality: 1800kbps
 https://event.pull.hebtv.com/jishi/cp2.m3u8
-#EXTINF:-1 tvg-id="CCTV-13" tvg-name="CCTV-13" group-title="央视频道",CCTV-13 [H.264 High@4.0 356KB/s]
-# source: bestfan-cctv | quality: 1800kbps
-https://event.pull.hebtv.com/jishi/cp1.m3u8
-#EXTINF:-1 tvg-id="CCTV-5+" tvg-name="CCTV-5+" group-title="央视频道",CCTV-5+ [H.264 High@4.0 330KB/s]
-# source: guovin | quality: 1500kbps
-http://120.76.248.139/live/bfgd/4200000246.m3u8
-#EXTINF:-1 tvg-id="央视网" tvg-name="央视网" group-title="央视频道",央视网 [H.265 HEVC-Main@5.0 312KB/s]
-# source: platform:bilibili | quality: 1804kbps
-https://live.yang-1989.eu.org/bilibili/8178490
-#EXTINF:-1 tvg-id="CCTV7" tvg-name="CCTV7" group-title="央视频道",CCTV7 [H.264 High@4.1 258KB/s]
+#EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV3" group-title="央视频道",CCTV3 [H.264 Main@3.0 606KB/s]
 # source: bestfan-cctv | quality: 1440kbps
-http://45.192.97.170:8880/play/396.m3u8
-#EXTINF:-1 tvg-id="CCTV8" tvg-name="CCTV8" group-title="央视频道",CCTV8 [H.264 High@4.1 245KB/s]
+http://119.129.172.179:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="CCTV14" tvg-name="CCTV14" group-title="央视频道",CCTV14 [H.264 High@4.1 599KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://45.192.97.170:8880/play/403.m3u8
+#EXTINF:-1 tvg-id="CCTV13" tvg-name="CCTV13" group-title="央视频道",CCTV13 [? ?@0.0 598KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://45.192.97.170:8880/play/402.m3u8
+#EXTINF:-1 tvg-id="CCTV4" tvg-name="CCTV4" group-title="央视频道",CCTV4 [H.264 High@4.1 590KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://45.192.97.170:8880/play/392.m3u8
+#EXTINF:-1 tvg-id="CCTV5" tvg-name="CCTV5" group-title="央视频道",CCTV5 [H.264 Main@3.0 584KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://119.129.172.179:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="CCTV9" tvg-name="CCTV9" group-title="央视频道",CCTV9 [H.264 High@4.1 582KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://45.192.97.170:8880/play/398.m3u8
+#EXTINF:-1 tvg-id="CCTV2" tvg-name="CCTV2" group-title="央视频道",CCTV2 [H.264 Main@3.0 580KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://119.129.172.179:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="CCTV8" tvg-name="CCTV8" group-title="央视频道",CCTV8 [H.264 High@4.1 577KB/s]
 # source: bestfan-cctv | quality: 1440kbps
 http://45.192.97.170:8880/play/397.m3u8
-#EXTINF:-1 tvg-id="CCTV9" tvg-name="CCTV9" group-title="央视频道",CCTV9 [? ?@0.0 166KB/s]
+#EXTINF:-1 tvg-id="CCTV16" tvg-name="CCTV16" group-title="央视频道",CCTV16 [? ?@0.0 544KB/s]
+# source: bestfan-cctv | quality: 1200kbps
+http://1.24.39.180:9003/hls/60/index.m3u8
+#EXTINF:-1 tvg-id="央视网美学" tvg-name="央视网美学" group-title="央视频道",央视网美学 [H.264 High@4.0 463KB/s]
+# source: platform:douyin | quality: 1057kbps
+https://live.yang-1989.eu.org/douyin/48025733893
+#EXTINF:-1 tvg-id="CCTV12" tvg-name="CCTV12" group-title="央视频道",CCTV12 [H.264 High@3.0 406KB/s]
 # source: bestfan-cctv | quality: 1440kbps
-http://36.136.38.87:9901/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
+http://119.129.172.179:9901/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="CCTV5+" tvg-name="CCTV5+" group-title="央视频道",CCTV5+ [H.264 High@4.0 389KB/s]
+# source: bestfan-cctv | quality: 972kbps
+http://183.129.255.66:8480/hls/6/index.m3u8
+#EXTINF:-1 tvg-id="CCTV-13" tvg-name="CCTV-13" group-title="央视频道",CCTV-13 [H.264 High@4.0 365KB/s]
+# source: bestfan-cctv | quality: 1800kbps
+https://event.pull.hebtv.com/jishi/cp1.m3u8
+#EXTINF:-1 tvg-id="CCTV11" tvg-name="CCTV11" group-title="央视频道",CCTV11 [H.264 High@3.0 343KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://59.39.89.130:60901/tsfile/live/0011_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="CCTV7" tvg-name="CCTV7" group-title="央视频道",CCTV7 [H.264 High@3.0 339KB/s]
+# source: bestfan-cctv | quality: 1440kbps
+http://59.39.89.130:60901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="央视网" tvg-name="央视网" group-title="央视频道",央视网 [H.265 HEVC-Main@5.0 208KB/s]
+# source: platform:bilibili | quality: 1362kbps
+https://live.yang-1989.eu.org/bilibili/8178490
 #PLAYLIST:卫视频道
-#EXTINF:-1 tvg-id="湖南卫视" tvg-name="湖南卫视" group-title="卫视频道",湖南卫视 [H.265 HEVC-Main@5.0 3463KB/s]
-# source: guovin | quality: 1200kbps
-http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
-#EXTINF:-1 tvg-id="江西卫视" tvg-name="江西卫视" group-title="卫视频道",江西卫视 [H.264 High@4.1 2832KB/s]
-# source: guovin | quality: 878kbps
-http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwshd
-#EXTINF:-1 tvg-id="重庆卫视" tvg-name="重庆卫视" group-title="卫视频道",重庆卫视 [H.264 High@4.1 2780KB/s]
-# source: guovin | quality: 1005kbps
-http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd
-#EXTINF:-1 tvg-id="陕西卫视" tvg-name="陕西卫视" group-title="卫视频道",陕西卫视 [H.264 High@4.1 2767KB/s]
-# source: guovin | quality: 814kbps
-http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd
-#EXTINF:-1 tvg-id="浙江卫视" tvg-name="浙江卫视" group-title="卫视频道",浙江卫视 [H.264 High@4.1 2677KB/s]
-# source: guovin | quality: 807kbps
-http://63.141.230.178:82/gslb/zbdq5.m3u8?id=zjwshd
-#EXTINF:-1 tvg-id="西藏卫视" tvg-name="西藏卫视" group-title="卫视频道",西藏卫视 [H.264 High@4.1 2665KB/s]
+#EXTINF:-1 tvg-id="湖南卫视" tvg-name="湖南卫视" group-title="卫视频道",湖南卫视 [H.265 HEVC-Main@5.0 3100KB/s]
+# source: zbds-iptv4 | quality: 1200kbps
+http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/Y2RuZXhfaWQ9YWxfaGxzX2xkdnQmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
+#EXTINF:-1 tvg-id="黑龙江卫视" tvg-name="黑龙江卫视" group-title="卫视频道",黑龙江卫视 [H.264 High@4.1 1846KB/s]
+# source: guovin | quality: 1090kbps
+http://107.150.60.122/live/hljwshd.m3u8
+#EXTINF:-1 tvg-id="江苏卫视" tvg-name="江苏卫视" group-title="卫视频道",江苏卫视 [H.264 High@4.1 1831KB/s]
+# source: guovin | quality: 886kbps
+http://38.75.136.137:98/gslb/dsdqpub/jswshd.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="西藏卫视" tvg-name="西藏卫视" group-title="卫视频道",西藏卫视 [H.264 High@4.1 1831KB/s]
+# source: guovin | quality: 886kbps
+http://107.150.60.122/live/xzws.m3u8
+#EXTINF:-1 tvg-id="四川卫视" tvg-name="四川卫视" group-title="卫视频道",四川卫视 [H.264 High@4.1 1821KB/s]
+# source: guovin | quality: 865kbps
+http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwshd
+#EXTINF:-1 tvg-id="青海卫视" tvg-name="青海卫视" group-title="卫视频道",青海卫视 [H.264 High@4.1 1821KB/s]
+# source: guovin | quality: 821kbps
+http://107.150.60.122/live/qhws.m3u8
+#EXTINF:-1 tvg-id="河南卫视" tvg-name="河南卫视" group-title="卫视频道",河南卫视 [H.264 High@4.1 1803KB/s]
 # source: guovin | quality: 918kbps
-http://63.141.230.178:82/gslb/zbdq5.m3u8?id=xzws
-#EXTINF:-1 tvg-id="广东卫视" tvg-name="广东卫视" group-title="卫视频道",广东卫视 [? ?@0.0 384KB/s]
-# source: guovin | quality: 1406kbps
-http://120.76.248.139/live/bfgd/4200000092.m3u8
-#EXTINF:-1 tvg-id="东南卫视" tvg-name="东南卫视" group-title="卫视频道",东南卫视 [H.264 High@4.0 380KB/s]
-# source: guovin | quality: 1500kbps
-http://120.76.248.139/live/bfgd/4200000483.m3u8
-#EXTINF:-1 tvg-id="内蒙古卫视" tvg-name="内蒙古卫视" group-title="卫视频道",内蒙古卫视 [H.264 High@4.0 375KB/s]
-# source: guovin | quality: 2000kbps
+http://107.150.60.122/live/hawshd.m3u8
+#EXTINF:-1 tvg-id="深圳卫视" tvg-name="深圳卫视" group-title="卫视频道",深圳卫视 [H.264 High@4.1 1799KB/s]
+# source: guovin | quality: 962kbps
+http://107.150.60.122/live/szwshd.m3u8
+#EXTINF:-1 tvg-id="山东卫视" tvg-name="山东卫视" group-title="卫视频道",山东卫视 [H.264 High@4.1 1715KB/s]
+# source: guovin | quality: 1090kbps
+http://63.141.230.178:82/gslb/zbdq5.m3u8?id=sdwshd
+#EXTINF:-1 tvg-id="内蒙古卫视" tvg-name="内蒙古卫视" group-title="卫视频道",内蒙古卫视 [H.264 High@4.0 703KB/s]
+# source: guovin | quality: 2068kbps
 http://play1-qk.nmtv.cn/live/1769652018126032.m3u8
-#EXTINF:-1 tvg-id="深圳卫视" tvg-name="深圳卫视" group-title="卫视频道",深圳卫视 [H.264 High@4.0 369KB/s]
-# source: guovin | quality: 1500kbps
-http://120.76.248.139/live/bfgd/4200000100.m3u8
-#EXTINF:-1 tvg-id="云南卫视" tvg-name="云南卫视" group-title="卫视频道",云南卫视 [H.264 High@4.0 363KB/s]
-# source: guovin | quality: 1500kbps
-http://120.76.248.139/live/bfgd/4200000482.m3u8
-#EXTINF:-1 tvg-id="河北卫视" tvg-name="河北卫视" group-title="卫视频道",河北卫视 [H.264 High@5.1 361KB/s]
-# source: guovin | quality: 2195kbps
-https://event.pull.hebtv.com/live/live101.m3u8
-#EXTINF:-1 tvg-id="广西卫视" tvg-name="广西卫视" group-title="卫视频道",广西卫视 [H.264 High@4.0 351KB/s]
-# source: guovin | quality: 1363kbps
-http://120.76.248.139/live/bfgd/4200000116.m3u8
-#EXTINF:-1 tvg-id="黑龙江卫视" tvg-name="黑龙江卫视" group-title="卫视频道",黑龙江卫视 [? ?@0.0 338KB/s]
-# source: guovin | quality: 1323kbps
-http://120.76.248.139/live/bfgd/4200000095.m3u8
-#EXTINF:-1 tvg-id="北京卫视" tvg-name="北京卫视" group-title="卫视频道",北京卫视 [? ?@0.0 332KB/s]
-# source: guovin | quality: 1343kbps
-http://120.76.248.139/live/bfgd/4200000083.m3u8
-#EXTINF:-1 tvg-id="青海卫视" tvg-name="青海卫视" group-title="卫视频道",青海卫视 [H.264 High@4.0 330KB/s]
-# source: guovin | quality: 1500kbps
-http://120.76.248.139/live/bfgd/4200000111.m3u8
-#EXTINF:-1 tvg-id="山东卫视" tvg-name="山东卫视" group-title="卫视频道",山东卫视 [H.264 High@4.0 324KB/s]
-# source: guovin | quality: 1363kbps
-http://120.76.248.139/live/bfgd/4200000099.m3u8
-#EXTINF:-1 tvg-id="海南卫视" tvg-name="海南卫视" group-title="卫视频道",海南卫视 [? ?@0.0 324KB/s]
-# source: guovin | quality: 1500kbps
-http://120.76.248.139/live/bfgd/4200000473.m3u8
-#EXTINF:-1 tvg-id="湖北卫视" tvg-name="湖北卫视" group-title="卫视频道",湖北卫视 [? ?@0.0 318KB/s]
-# source: guovin | quality: 1363kbps
-http://120.76.248.139/live/bfgd/4200000102.m3u8
-#EXTINF:-1 tvg-id="甘肃卫视" tvg-name="甘肃卫视" group-title="卫视频道",甘肃卫视 [H.264 High@4.0 305KB/s]
-# source: guovin | quality: 1363kbps
-http://120.76.248.139/live/bfgd/4200000119.m3u8
-#EXTINF:-1 tvg-id="安多卫视" tvg-name="安多卫视" group-title="卫视频道",安多卫视 [H.264 Main@4.2 226KB/s]
-# source: guovin | quality: 2234kbps
+#EXTINF:-1 tvg-id="东方卫视" tvg-name="东方卫视" group-title="卫视频道",东方卫视 [H.264 High@5.0 475KB/s]
+# source: zbds-iptv4 | quality: 2400kbps
+http://bp-resource-dfl.bestv.cn/155/3/video.m3u8
+#EXTINF:-1 tvg-id="东方卫视4K" tvg-name="东方卫视4K" group-title="卫视频道",东方卫视4K [H.264 High@5.0 467KB/s]
+# source: zbds-iptv4 | quality: 2368kbps
+http://bp-resource-dfl.bestv.cn/148/3/video.m3u8
+#EXTINF:-1 tvg-id="河北卫视" tvg-name="河北卫视" group-title="卫视频道",河北卫视 [H.264 High@4.1 436KB/s]
+# source: guovin | quality: 891kbps
+http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="新疆卫视" tvg-name="新疆卫视" group-title="卫视频道",新疆卫视 [H.264 High@4.1 406KB/s]
+# source: zbds-iptv4 | quality: 998kbps
+http://218.84.12.186:8001/hls/main/playlist.m3u8?zxinjd;http://218.84.12.186:8001/hls/main/playlist.m3u8zxinjd
+#EXTINF:-1 tvg-id="浙江卫视" tvg-name="浙江卫视" group-title="卫视频道",浙江卫视 [H.264 High@4.0 387KB/s]
+# source: zbds-iptv4 | quality: 900kbps
+http://ali-xwl.cztv.com/live/channel011080Plxw.m3u8
+#EXTINF:-1 tvg-id="安多卫视" tvg-name="安多卫视" group-title="卫视频道",安多卫视 [H.264 Main@4.2 292KB/s]
+# source: guovin | quality: 2426kbps
 https://liveout.xntv.tv/a65jur/96iln2.m3u8
+#EXTINF:-1 tvg-id="山西卫视" tvg-name="山西卫视" group-title="卫视频道",山西卫视 [H.264 High@4.1 230KB/s]
+# source: zbds-iptv4 | quality: 1200kbps
+http://119.39.9.8:9901/tsfile/live/0118_1.m3u8
+#PLAYLIST:电影频道
+#EXTINF:-1 tvg-id="中国电影报道" tvg-name="中国电影报道" group-title="电影频道",中国电影报道 [H.264 Main@5.1 377KB/s]
+# source: platform:douyin | quality: 1800kbps
+https://live.yang-1989.eu.org/douyin/zgdybd
