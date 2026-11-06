@@ -69,8 +69,22 @@ def _h264_only(categorized: dict) -> dict:
 
 
 def build_tvbox_m3u(categorized: dict, epg_template: str = "") -> str:
-    """电视端（TVBox/海信）安全版：纯 H.264，剔除 HEVC 与未知编码。"""
-    return build_m3u(_h264_only(categorized), epg_template)
+    """电视端（TVBox/海信）安全版：纯 H.264，剔除 HEVC 与未知编码。
+
+    极简净化：去掉 EXTINF 行的编码标签尾注与 # 注释行——
+    部分 TVBox/电视固件的解析器对长属性行/中文注释半瘫（清单能加载但播放黑屏）。
+    """
+    m3u = build_m3u(_h264_only(categorized), epg_template)
+    out = []
+    for ln in m3u.splitlines():
+        if ln.startswith("#EXTINF"):
+            # 去行尾 [编码标签]（部分 TVBox 解析器对长属性行半瘫）
+            ln = re.sub(r"\s*\[[^\]]*\]\s*$", "", ln)
+        elif ln.startswith("#") and not ln.startswith("#EXTINF") \
+                and not ln.startswith("#PLAYLIST") and not ln.startswith("#EXTM3U"):
+            continue    # 丢弃 # source: 等业务注释
+        out.append(ln)
+    return "\n".join(out) + "\n"
 
 
 def build_tvbox_txt(categorized: dict) -> str:
